@@ -12,13 +12,27 @@
 	google.load("jquery", "1");
 	google.load("jqueryui", "1");
 	
-  google.setOnLoadCallback(function() {
+	google.setOnLoadCallback(function() {
 		$('.boxgrid.caption').hover(function() {
 			$('.cover', this).stop().animate({top:'181px'},{queue:false,duration:160});
 		}, function() {
 			$('.cover', this).stop().animate({top:'200px'},{queue:false,duration:160});
 		});
+		
+		$('.mixpanel-track-click').each(function(i, link) {
+			link.setAttribute("onClick", "javascript: trackAndGo('"+link.href+"', '"+link.title+"')");
+			link.href="#";
+		});
 	});
+	
+	function trackAndGo(link, title) {
+		mpmetrics.track("clicked_skill", {
+			'skill': title
+		}, function() {
+			window.location = link;
+		});
+	} 
+
 
 </script>
 </head>
@@ -36,15 +50,15 @@
         </div>
         <div class="colx6 column left">
             <ul id="skills">
-                <li><a target="_parent" href="http://thelab.carlsverre.com" title="The Lab">Thoughts on Code</a></li>
-                <li><a target="_parent" href="http://github.com/carlsverre" title="Carl Sverre @ Github">Me on Github</a></li>
-                <li><a target="_parent" href="http://dl.dropbox.com/u/146439/resume_carl_sverre_2010.pdf">Resume Short</a></li>
+                <li><a target="_parent" class="mixpanel-track-click" href="http://thelab.carlsverre.com" title="The Lab">Thoughts on Code</a></li>
+                <li><a target="_parent" class="mixpanel-track-click" href="http://github.com/carlsverre" title="Carl Sverre @ Github">Me on Github</a></li>
+                <li><a target="_parent" class="mixpanel-track-click" href="http://dl.dropbox.com/u/146439/resume_carl_sverre_2010.pdf" title="Resume">My Resume</a></li>
             </ul>
         </div>
         <div class="colx6 last column right">
             <ul id="skills">
-                <li><a target="_parent" href="mailto:carl@carlsverre.com">carl@carlsverre.com</a></li>
-                <li><a target="_parent" href="http://www.google.com/profiles/bloonlabs">Other Links</a></li>
+                <li><a target="_parent" class="mixpanel-track-click" href="mailto:mail@carlsverre.com" title="My E-mail">mail@carlsverre.com</a></li>
+                <li><a target="_parent" class="mixpanel-track-click" href="http://www.google.com/profiles/sverre.carl" title="My Google Profile">Other Links</a></li>
             </ul>
         </div>
     </div>
@@ -58,5 +72,7 @@ try {
 var pageTracker = _gat._getTracker("UA-7857140-1");
 pageTracker._trackPageview();
 } catch(err) {}</script>
+
+<script type='text/javascript'> var mp_protocol = (('https:' == document.location.protocol) ? 'https://' : 'http://'); document.write(unescape('%3Cscript src="' + mp_protocol + 'api.mixpanel.com/site_media/js/api/mixpanel.js" type="text/javascript"%3E%3C/script%3E')); </script> <script type='text/javascript'> try {  var mpmetrics = new MixpanelLib('d8f21848e8e7c008519092b32d57e75a'); } catch(err) { null_fn = function () {}; var mpmetrics = {  track: null_fn,  track_funnel: null_fn,  register: null_fn,  register_once: null_fn, register_funnel: null_fn }; } </script>
 </body>
 </html>
