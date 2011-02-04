@@ -1,5 +1,6 @@
 // Load jQuery
 
+var debugMode = false;
 
 function init() {
 	$('.boxgrid.caption').hover(function() {
@@ -14,16 +15,21 @@ function init() {
 	});
 	
 	var referrer = parseUri(document.referrer);
+	debugMode = (referrer && referrer.host == 'localhost');
 
 	// track the visiting event
-	if(referrer && referrer.host != "localhost") {
-		mpmetrics.track("visit", {
-			'referrer': referrer.host
+	if(referrer) {
+		mpmetrics.register({
+			'referrer': referrer.host,
+			'mp_source': referrer.host
 		});
+		
+		if(!debugMode) mpmetrics.track("visit");
 	}
 }
 
 function trackAndGo(link, title) {
+	if(debugMode) return;
 	mpmetrics.track("clicked_skill", {
 		'skill': title
 	}, function() {
