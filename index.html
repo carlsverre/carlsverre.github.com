@@ -6,35 +6,12 @@
 <meta name="keywords" content="carl, sverre, github, homepage, blog, 2dsquid, bloonlabs, _0rphan, bloonmail, pixelpig, photos" />
 <link href="grid.css" rel="stylesheet" type="text/css" />
 <link href="style.css" rel="stylesheet" type="text/css" />
-<script src="http://www.google.com/jsapi"></script>
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script src="app.js" type="text/javascript"></script>
 <script>
-	// Load jQuery
-	google.load("jquery", "1");
-	google.load("jqueryui", "1");
-	
-	google.setOnLoadCallback(function() {
-		$('.boxgrid.caption').hover(function() {
-			$('.cover', this).stop().animate({top:'181px'},{queue:false,duration:160});
-		}, function() {
-			$('.cover', this).stop().animate({top:'200px'},{queue:false,duration:160});
-		});
-		
-		$('.mixpanel-track-click').each(function(i, link) {
-			link.setAttribute("onClick", "javascript: trackAndGo('"+link.href+"', '"+link.title+"')");
-			link.href="#";
-		});
-
-		// track the visiting event
-		mpmetrics.track("visit");
-	});
-	
-	function trackAndGo(link, title) {
-		mpmetrics.track("clicked_skill", {
-			'skill': title
-		}, function() {
-			window.location = link;
-		});
-	}
+google.load("jquery", "1");
+google.load("jqueryui", "1");
+google.setOnLoadCallback(init);
 </script>
 </head>
 <body>
