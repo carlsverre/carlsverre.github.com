@@ -11,7 +11,7 @@ function init() {
 	
 	$('.mixpanel-track-click').each(function(i, link) {
 		link.setAttribute("onClick", "javascript: trackAndGo('"+link.href+"', '"+link.title+"')");
-		link.href="#";
+		link.href="javascript:void(0);";
 	});
 	
 	var referrer = parseUri(document.referrer);
