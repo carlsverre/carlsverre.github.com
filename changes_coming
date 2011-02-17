@@ -1,0 +1,13 @@
+Ideas for v2 of carlsverre.com
+------------------------------
+
+* Game of Life running in background (canvas stretched to window size, fixed position)
+* Looks awesome on a mobile device!  (important)
+* simple "business card" about me at the top -> download some type of contact file?
+* get rid of thelab.carlsverre.com and figure out something easier to update
+  * perhaps do posts in a git-repo branch?
+  * have a git-repo for standalone posts?
+  * have a seperate branch in the carlsverre site repo for standalone posts?
+* list latest github repos, along with a blurb extracted from something or other
+* list latest tweets/gists/photos? in a stream
+* list featured github repos
