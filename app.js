@@ -58,11 +58,10 @@ function init() {
 	// track the visiting event
 	if(!debugMode) {
 		$('.mixpanel-track-click').each(function(i, link) {
-			$(link).click(function(e) {
+			$(link).click(function(event) {
+				event.preventDefault();
 				trackAndGo(link.href,link.title);
-				e.preventDefault();
 			});
-			link.href = "#";
 		});
 		
 		var referrer = parseUri(document.referrer);
