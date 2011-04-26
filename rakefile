@@ -1,0 +1,20 @@
+SCRIPT_DIR = 					File.dirname(__FILE__)
+CONFIG_DIR = 					File.join(SCRIPT_DIR, "_config")
+ASSETS_DIR = 					File.join(SCRIPT_DIR, "assets")
+                  		
+JS_DIR =							File.join(ASSETS_DIR, "js")
+COFFEE_DIR = 					File.join(JS_DIR, "coffee")
+                  		
+CSS_DIR = 						File.join(ASSETS_DIR, "css")
+SASS_DIR = 						File.join(CSS_DIR, "sass")
+                  		
+COMPASS_CONFIG = 			File.join(CONFIG_DIR, "compass.rb")
+                  		
+PACKAGE_DIR = 				File.join(ASSETS_DIR, "packages")
+PACKAGE_CSS = 				"package.css"
+PACKAGE_JS = 					"package.js"
+
+# Load in tasks
+Dir.glob('_lib/tasks/*.rake').each { |r| import r }
+
+task :default => ["assets:watch"]
