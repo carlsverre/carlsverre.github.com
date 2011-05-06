@@ -64,11 +64,12 @@ function init() {
 			});
 		});
 		
-		var referrer = parseUri(document.referrer);
-		mpmetrics.register({
-			'referrer': referrer.host,
-			'mp_source': referrer.host
-		});
-		mpmetrics.track("visit");
+//		var referrer = parseUri(document.referrer);
+//		mpmetrics.register({
+//			'referrer': referrer.host,
+//			'mp_source': referrer.host
+//		});
+//		mpmetrics.track("visit");
+        mpmetrics.track_pageview();
 	}
 }
